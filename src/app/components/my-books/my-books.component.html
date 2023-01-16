@@ -1,0 +1,45 @@
+<div class="row" style="justify-content: center;">
+    <ng-container *ngIf="bookList">
+        <div *ngFor="let book of bookList;" class="card border-secondary col-md-9 p-0 m-3" style="max-width: 18rem;">
+            <div class="card-header search-card bg-success text-white d-flex font-weight-bold">
+                <h3>{{book.book.title}}</h3>
+                <ng-container *ngIf="isAuthor=='true'">
+                    <a type="button" *ngIf="book.book.blocked==false" (click)="blockUnblockBook(true,book.book.bookId)"
+                        style="position: absolute; right:0 !important; border-color:white; margin-left:12px"
+                        class="btn btn-outline-success text-white mr-3">Block</a>
+                    <a type="button" *ngIf="book.book.blocked==true" (click)="blockUnblockBook(false,book.book.bookId)"
+                        style="position: absolute; right:0 !important; border-color:white; margin-left:12px"
+                        class="btn btn-outline-success text-white mr-3">Unblock</a>
+                </ng-container>
+            </div>
+            <div class="card-body text-secondary pb-0" style="background: oldlace;">
+                <h4 class="card-title">{{book.book?.category}}</h4>
+            </div>
+            <div class="card-body text-secondary" style="background: oldlace;">
+                <span class="d-flex">
+                    <h4 class="card-title text-dark">Price - </h4>
+                    <h4 class="card-text ">{{book.book?.price}}</h4>
+                </span>
+                <span class="d-flex">
+                    <h4 class="card-title text-dark">Subscription Date - </h4>
+                    <h4 class="card-text ">{{book.subscription?.subscriptionDate}}</h4>
+                </span>
+                <span class="d-flex">
+                    <h4 class="card-title text-dark">Publisher - </h4>
+                    <h4 class="card-text">{{book.book?.publisher}}</h4>
+                </span>
+            </div>
+            <div class=" search-card card-footer text-center bg-secondary d-flex">
+                <ng-container *ngIf="isAuthor=='true'">
+                    <a type="button" routerLink='/createBook/{{book.book.bookId}}' style="border-color:white"
+                        class="btn btn-outline-success text-white">Edit</a>
+                </ng-container>
+                <a type="button" routerLink='/readBook/{{book.book.bookId}}'
+                    style="border-color:white; margin-left:12px" class="btn btn-outline-success text-white">Read</a>
+                <a type="button" (click)="unSubscribeBook(book.book.bookId)"
+                    style="border-color:white; margin-left:12px"
+                    class="btn btn-outline-success text-white">Unsubscribe</a>
+            </div>
+        </div>
+    </ng-container>
+</div>

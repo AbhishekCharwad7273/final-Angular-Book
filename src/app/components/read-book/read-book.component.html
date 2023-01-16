@@ -1,0 +1,15 @@
+<div class="row m-3">
+    <a routerLink="/searchBook">Back</a>
+</div>
+<div class="book-card" style="justify-content: center;">
+    <ng-container *ngIf="bookData">
+        <div class="card border-secondary p-0" style="min-height: 18rem;">
+            <div class="card-header book-card bg-success text-white font-weight-bold" style="box-shadow: none;">
+                {{bookData.title}}</div>
+            <div class="card-body text-secondary">
+                <h5 class="card-title">{{bookData?.category}}</h5>
+                <p class="card-text">{{bookData?.content}}</p>
+            </div>
+        </div>
+    </ng-container>
+</div>

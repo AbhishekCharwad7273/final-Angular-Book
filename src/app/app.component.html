@@ -1,0 +1,48 @@
+<div>
+  <nav class="navbar navbar-expand navbar-dark bg-dark">
+    <span class="mr-1"><img src="../assets/img/bookLogo.png" height="44px" alt=""></span>
+    <a class="navbar-brand" href="#">Digital Book App</a>
+    <ng-container *ngIf="isUserLoggedIn">
+      <div class="navbar-nav mr-auto">
+        <li class="nav-item d-flex">
+          <a routerLink="searchBook" class="nav-link" style="font-size: 16px;">Search &nbsp; &nbsp;|</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="myBooks" class="nav-link" style="font-size: 16px;">My Books</a>
+        </li>
+        <li *ngIf="isAuthor" class="nav-item">
+          <a routerLink="createBook" class="nav-link" style="font-size: 16px;">|&nbsp; &nbsp;Create</a>
+        </li>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="isUserLoggedIn; else newUser">
+      <div class="navbar-nav position-right mr-auto">
+        <li class="nav-item">
+          <span class="text-white">{{currentUser}}</span>
+          <a routerLink="signIn" class="nav-link" (click)="signOut()">Sign Out</a>
+        </li>
+      </div>
+    </ng-container>
+
+
+    <ng-template #newUser>
+      <div class="navbar-nav position-right mr-auto">
+        <li class="nav-item d-flex">
+          <a routerLink="searchAllBook" class="nav-link" style="font-size: 16px;">Search All Book &nbsp; &nbsp;|</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="signIn" class="nav-link">Sign In</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="signup" class="nav-link">Sign Up</a>
+        </li>
+      </div>
+    </ng-template>
+
+
+  </nav>
+
+  <div class="container mt-3">
+    <router-outlet></router-outlet>
+  </div>
+</div>
