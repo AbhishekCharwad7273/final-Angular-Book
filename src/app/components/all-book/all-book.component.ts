@@ -14,7 +14,7 @@ export class AllBookComponent implements OnInit {
   }
 
   searchAllBooks() {
-    this.digitalBookService.searchBook(null)
+    this.digitalBookService.searchAllBook(null)
       .subscribe({
         next: (data) => {
           this.bookList = data;

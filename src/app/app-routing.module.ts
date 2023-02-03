@@ -7,15 +7,16 @@ import { CreateBookComponent } from './components/create-book/create-book.compon
 import { ReadBookComponent } from './components/read-book/read-book.component';
 import { MyBooksComponent } from './components/my-books/my-books.component';
 import { AllBookComponent } from './components/all-book/all-book.component';
+import { LoggedInGuard } from './services/logged-in.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '', pathMatch: 'full' },
-  { path: 'searchBook', component: BookListComponent },
+  { path: 'searchBook', component: BookListComponent,canActivate:[LoggedInGuard] },
   { path: 'searchAllBook', component: AllBookComponent },
-  { path: 'myBooks', component: MyBooksComponent },
-  { path: 'createBook', component: CreateBookComponent },
+  { path: 'myBooks', component: MyBooksComponent,canActivate:[LoggedInGuard] },
+  { path: 'createBook', component: CreateBookComponent,canActivate:[LoggedInGuard] },
   { path: 'createBook/:bookId', component: CreateBookComponent },
-  { path: 'readBook/:bookId', component: ReadBookComponent },
+  { path: 'readBook/:bookId', component: ReadBookComponent},
   { path: 'signIn', component: LoginComponent },
   { path: 'signup', component: SignupComponent }
 ];

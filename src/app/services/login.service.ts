@@ -4,8 +4,9 @@ import { Observable } from 'rxjs';
 import { BehaviorSubject, Subject } from 'rxjs';
 
 //const baseUrl = 'http://localhost:8080/api/tutorials';
-const loginUrl = 'http://localhost:9091/api/v1/digitalbooks/authentication/sign-in'
+const USER_ROOT_URL:string = "http://43.207.54.29";
 
+const loginUrl = USER_ROOT_URL+':9091/api/v1/digitalbooks/authentication/sign-in';
 @Injectable({
   providedIn: 'root'
 })
@@ -35,7 +36,7 @@ export class LoginService {
   }
 
   signUp(data: any): Observable<any> {
-    return this.http.post('http://localhost:9091/api/v1/digitalbooks/authentication/sign-up', data);
+    return this.http.post(USER_ROOT_URL+':9091/api/v1/digitalbooks/authentication/sign-up', data);
   }
 
 }
